@@ -77,7 +77,7 @@ function videoembed_add_css($guid, $width, $height) {
       <style type=\"text/css\">
         #embedvideo{$guid} { 
           height: {$height}px;
-          width: {$width}px;
+          width: {$width}px; 
         }
       </style>";
 
@@ -143,12 +143,7 @@ function videoembed_add_object($type, $url, $guid, $width, $height) {
 function videoembed_calc_size(&$width, &$height, $aspect_ratio, $toolbar_height) {
 	// set video width and height
 	if (!$width) {
-		$width = get_plugin_setting('videowidth', 'embedvideo');
-	}
-
-	// make sure width is a number and greater than zero
-	if (!isset($width) || !is_numeric($width) || $width < 0) {
-		$width = 284;
+		$width = (int)elgg_get_plugin_setting('videowidth', 'embedvideo');
 	}
 
 	$height = round($width / $aspect_ratio) + $toolbar_height;
@@ -166,7 +161,7 @@ function videoembed_youtube_handler($url, $guid, $videowidth) {
 	// this extracts the core part of the url needed for embeding
 	$videourl = videoembed_youtube_parse_url($url);
 	if (!isset($videourl)) {
-		return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'youtube') . '</b></p>';
+		return '<p><b>' . elgg_echo('embedvideo:parseerror', array('youtube')) . '</b></p>';
 	}
 
 	videoembed_calc_size($videowidth, $videoheight, 425/320, 24);
@@ -238,7 +233,7 @@ function videoembed_google_handler($url, $guid, $videowidth) {
 	// this extracts the core part of the url needed for embeding
 	$videourl = videoembed_google_parse_url($url);
 	if (!isset($videourl)) {
-		return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'google') . '</b></p>';
+		return '<p><b>' . elgg_echo('embedvideo:parseerror', array('google')) . '</b></p>';
 	}
 
 	videoembed_calc_size($videowidth, $videoheight, 400/300, 27);
@@ -316,7 +311,7 @@ function videoembed_vimeo_handler($url, $guid, $videowidth) {
 	// this extracts the core part of the url needed for embeding
 	$videourl = videoembed_vimeo_parse_url($url);
 	if (!isset($videourl)) {
-		return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'vimeo') . '</b></p>';
+		return '<p><b>' . elgg_echo('embedvideo:parseerror', array('vimeo')) . '</b></p>';
 	}
 
 	// aspect ratio changes based on video - need to investigate
@@ -392,7 +387,7 @@ function videoembed_metacafe_handler($url, $guid, $videowidth) {
 	// this extracts the core part of the url needed for embeding
 	$videourl = videoembed_metacafe_parse_url($url);
 	if (!isset($videourl)) {
-		return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'metacafe') . '</b></p>';
+		return '<p><b>' . elgg_echo('embedvideo:parseerror', array('metacafe')) . '</b></p>';
 	}
 
 	videoembed_calc_size($videowidth, $videoheight, 400/295, 40);
@@ -458,7 +453,7 @@ function videoembed_veoh_handler($url, $guid, $videowidth) {
 	// this extracts the core part of the url needed for embeding
 	$videourl = videoembed_veoh_parse_url($url);
 	if (!isset($videourl)) {
-		return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'veoh') . '</b></p>';
+		return '<p><b>' . elgg_echo('embedvideo:parseerror', array('veoh')) . '</b></p>';
 	}
 
 	videoembed_calc_size($videowidth, $videoheight, 410/311, 30);
@@ -524,7 +519,7 @@ function videoembed_dm_handler($url, $guid, $videowidth) {
 	// this extracts the core part of the url needed for embeding
 	$videourl = videoembed_dm_parse_url($url);
 	if (!isset($videourl)) {
-		return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'daily motion') . '</b></p>';
+		return '<p><b>' . elgg_echo('embedvideo:parseerror', array('daily motion')) . '</b></p>';
 	}
 
 	videoembed_calc_size($videowidth, $videoheight, 420/300, 35);
@@ -593,7 +588,7 @@ function videoembed_blip_handler($url, $guid, $videowidth) {
 		if ($videourl == 1) {
 			return '<p><b>Only embed supported for blip.tv</b></p>';
 		} else {
-			return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'blip.tv') . '</b></p>';
+			return '<p><b>' . elgg_echo('embedvideo:parseerror', array('blip.tv')) . '</b></p>';
 		}
 	}
 
@@ -647,7 +642,7 @@ function videoembed_teachertube_handler($url, $guid, $videowidth) {
 	// this extracts the core part of the url needed for embeding
 	$videourl = videoembed_teachertube_parse_url($url);
 	if (!is_numeric($videourl)) {
-		return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'teacher tube') . '</b></p>';
+		return '<p><b>' . elgg_echo('embedvideo:parseerror', array('teacher tube')) . '</b></p>';
 	}
 
 	videoembed_calc_size($videowidth, $videoheight, 425/330, 20);
@@ -716,7 +711,7 @@ function videoembed_hulu_handler($url, $guid, $videowidth) {
 		if ($videourl == 1) {
 			return '<p><b>Only embed supported for hulu.com</b></p>';
 		} else {
-			return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'hulu.com') . '</b></p>';
+			return '<p><b>' . elgg_echo('embedvideo:parseerror', array('hulu.com')) . '</b></p>';
 		}
 	}
 
