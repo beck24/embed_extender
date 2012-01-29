@@ -28,6 +28,9 @@ if (!$messageboard_show) $messageboard_show = 'no';
 $page_show = $vars['entity']->page_show;
 if (!$page_show) $page_show = 'no';
 
+$bookmark_show = $vars['entity']->bookmark_show;
+if (!$bookmark_show) $bookmark_show = 'no';
+
 $custom_provider = $vars['entity']->custom_provider;
 if (!$custom_provider) $custom_provider = 'no';
 
@@ -106,6 +109,19 @@ echo elgg_view('input/dropdown', array(
 			'no' => elgg_echo('option:no')
 		),
 		'value' => $page_show
+));
+echo '</p>';
+
+//Show in bookmarks?
+echo '<p>';
+echo elgg_echo('embed_extender:bookmark:show');
+echo elgg_view('input/dropdown', array(
+		'name' => 'params[bookmark_show]',
+		'options_values' => array(
+			'yes' => elgg_echo('option:yes'),
+			'no' => elgg_echo('option:no')
+		),
+		'value' => $bookmark_show
 ));
 echo '</p>';
 

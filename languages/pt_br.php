@@ -10,6 +10,7 @@
 		'embed_extender:topicpost:show' 	=> "Exibe vídeos em postagens da comunidade",
 		'embed_extender:messageboard:show' 	=> "Exibe vídeos no quadro de mensagens",
 		'embed_extender:page:show' 			=> "Exibe vídeos em páginas",
+		'embed_extender:bookmark:show'		=> "Exibe vídeos em favoritos",
 		'embed_extender:custom_provider' 	=> "Permite conteúdo personalizado",
 		'embedvideo:novideo' 				=> 'Nenhum vídeo selecionado',
 		'embedvideo:unrecognized' 			=> 'Site não reconhecido',

@@ -10,6 +10,7 @@
 		'embed_extender:topicpost:show' 	=> "Display video in group posts",
 		'embed_extender:messageboard:show' 	=> "Display video in messageboard",
 		'embed_extender:page:show' 			=> "Display video in pages",
+		'embed_extender:bookmark:show'		=> "Display video in bookmarks",
 		'embed_extender:custom_provider' 	=> "Allow custom providers",
 		'embedvideo:novideo' 				=> 'No video set',
 		'embedvideo:unrecognized' 			=> 'Unrecognized video site',

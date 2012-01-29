@@ -208,7 +208,7 @@ function videoembed_youtube_parse_url($url) {
  * @param string $url
  * @return string youtube.com/v/hash
  */
-function videoembed_youtube_shortener_parse_url($url) {
+function videoembed_youtube_shortener_parse_url($url, $guid, $videowidth) {
 	$path = parse_url($url, PHP_URL_PATH);
 	$videourl = 'youtube.com/v' . $path;
 
