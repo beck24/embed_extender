@@ -187,7 +187,7 @@ function videoembed_youtube_parse_url($url) {
 
 	// This provides some security against inserting bad content.
 	// Divides url into http://, www or localization, domain name, path.
-	if (!preg_match('/(http:\/\/)([a-zA-Z]{2,3}\.)(youtube\.com\/)(.*)/', $url, $matches)) {
+	if (!preg_match('/(https?:\/\/)([a-zA-Z]{2,3}\.)(youtube\.com\/)(.*)/', $url, $matches)) {
 		//echo "malformed youtube url";
 		return;
 	}
