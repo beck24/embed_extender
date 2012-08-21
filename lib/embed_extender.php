@@ -18,7 +18,8 @@ function embed_extender_rewrite($hook, $entity_type, $returnvalue, $params){
 
 function embed_extender_parser($input, $view, $context)
 {
-	if (($view == 'annotation/generic_comment' || $view == 'annotation/default') && ($context != 'blog' && $context != 'messageboard' && $context != 'widgets' && $context != 'pages' && $context != 'bookmarks')){
+	$allowed_contexts = array('blog', 'messageboard', 'widgets', 'pages', 'bookmarks', 'file');
+	if (($view == 'annotation/generic_comment' || $view == 'annotation/default') && !in_array($context, $allowed_contexts)){
 		return $input;
 	}
 	
