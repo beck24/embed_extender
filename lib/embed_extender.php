@@ -56,6 +56,7 @@ function embed_extender_parser($input, $view, $context)
 	//Replace video providers with embebed content
 	if(preg_match_all("/$regexp/siU", $input, $matches, PREG_SET_ORDER)){
 		foreach($matches as $match){
+			if(empty($match[3])){ continue; }
 			foreach ($patterns as $pattern){
 				if (preg_match($pattern, $match[2]) > 0){
 					$input = str_replace($match[0], videoembed_create_embed_object($match[2], uniqid('embed_'), $width), $input);
