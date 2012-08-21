@@ -50,14 +50,14 @@ function embed_extender_parser($input, $view, $context)
 			if(empty($match[3])){ continue; }
 			foreach ($patterns as $pattern){
 				if (preg_match($pattern, $match[2]) > 0){
-					$input = str_replace($match[0], videoembed_create_embed_object($match[2], uniqid('embed_'), $width), $input);
+					$input = str_replace($match[0], videoembed_create_embed_object($match[2], uniqid('embed_'), $width, $match[0]), $input);
 				}				
 			}
 			
 			if($custom_provider == 'yes'){
 				foreach ($customPatterns as $pattern){
 					if (preg_match($pattern, $match[2]) > 0){
-						$input = str_replace($match[0], custom_videoembed_create_embed_object($match[2], uniqid('embed_'), $width), $input);
+						$input = str_replace($match[0], custom_videoembed_create_embed_object($match[2], uniqid('embed_'), $width, $match[0]), $input);
 					}				
 				}
 			}

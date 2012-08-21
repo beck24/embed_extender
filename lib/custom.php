@@ -8,15 +8,18 @@
 	}
 
 	//Generic embed functions - Don´t touch here!
-	function custom_videoembed_create_embed_object($url, $guid, $videowidth=0) {
-
+	function custom_videoembed_create_embed_object($url, $guid, $videowidth=0, $input) {
+		
+		if (!$input) {
+			$input = '<p><b>' . elgg_echo('embedvideo:unrecognized') . '</b></p>';
+		}
+		
 		if (!isset($url)) {
-			return '<p><b>' . elgg_echo('embedvideo:novideo') . '</b></p>';
+			return '<p><b>' . elgg_echo('embedvideo:novideo') . '</b></p>';;
 		}
 
-		$returnvalue = '<p><b>' . elgg_echo('embedvideo:unrecognized') . '</b></p>';
 		$params = array('url' => $url, 'guid' => $guid, 'videowidth' => $videowidth);
-		return elgg_trigger_plugin_hook('embed_extender', 'custom_embed', $params, $returnvalue);
+		return elgg_trigger_plugin_hook('embed_extender', 'custom_embed', $params, $input);
 	}
 
 
