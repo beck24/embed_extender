@@ -31,7 +31,7 @@
  * @param integer $videowidth override the admin set default width
  * @return string html video div with object embed code or error message
  */
-function videoembed_create_embed_object($url, $guid, $videowidth=0) {
+function videoembed_create_embed_object($url, $guid, $videowidth=0, $input) {
 
 	if (!isset($url)) {
 		return '<p><b>' . elgg_echo('embedvideo:novideo') . '</b></p>';
@@ -59,9 +59,13 @@ function videoembed_create_embed_object($url, $guid, $videowidth=0) {
 		return videoembed_teachertube_handler($url, $guid, $videowidth);
 	} else if (strpos($url, 'hulu.com') != false) {
 		return videoembed_hulu_handler($url, $guid, $videowidth);
-	} else {
+	}
+
+	if (!$input) {
 		return '<p><b>' . elgg_echo('embedvideo:unrecognized') . '</b></p>';
 	}
+	
+	return $input;
 }
 
 /**
