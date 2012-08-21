@@ -18,7 +18,7 @@ function embed_extender_rewrite($hook, $entity_type, $returnvalue, $params){
 
 function embed_extender_parser($input, $view, $context)
 {
-	$allowed_contexts = array('blog', 'messageboard', 'widgets', 'pages', 'bookmarks', 'file');
+	$allowed_contexts = array('blog', 'messageboard', 'widgets', 'pages', 'bookmarks', 'file', 'event_calendar', 'photos', 'polls');
 	if (($view == 'annotation/generic_comment' || $view == 'annotation/default') && !in_array($context, $allowed_contexts)){
 		return $input;
 	}
