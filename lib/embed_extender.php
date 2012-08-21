@@ -1,19 +1,9 @@
 <?php
 function embed_extender_rewrite($hook, $entity_type, $returnvalue, $params){
-	global $CONFIG;
-	
 	$view = $params['view'];
 	$context = elgg_get_context();
-	
-	//echo $view . ' Inicio ';
-	//echo 'Contexto: ' . $context;
-	//return $returnvalue . $view . ' Fim ';
-	//$returnvalue = embed_extender_parser(' ' . $returnvalue . ' ', $view, $context);
-	//return $returnvalue;
 
-	$returnvalue = embed_extender_parser(' ' . $returnvalue . ' ', $view, $context);
-	
-	return $returnvalue;
+	return embed_extender_parser(' ' . $returnvalue . ' ', $view, $context);
 }
 
 function embed_extender_parser($input, $view, $context)
