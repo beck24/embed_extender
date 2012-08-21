@@ -57,6 +57,15 @@ function embed_extender_init()
 	if($page_show == 'yes'){
 		elgg_register_plugin_hook_handler('view', 'object/bookmarks', 'embed_extender_rewrite');
 	}
+	
+	// Check embed code for custom views
+	$viewslist = elgg_get_plugin_setting('custom_views', 'embed_extender');
+	$views = explode("\n", $viewslist);
+	foreach ($views as $view) {
+		elgg_register_plugin_hook_handler('view', $view, 'embed_extender_rewrite');
+	}
+	
+	
 	elgg_extend_view('css','embed_extender/css');
 
 	
