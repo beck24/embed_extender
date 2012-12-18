@@ -62,7 +62,7 @@ function embed_extender_init()
 	$viewslist = elgg_get_plugin_setting('custom_views', 'embed_extender');
 	$views = explode("\n", $viewslist);
 	foreach ($views as $view) {
-		elgg_register_plugin_hook_handler('view', $view, 'embed_extender_rewrite');
+		elgg_register_plugin_hook_handler('view', trim($view), 'embed_extender_rewrite');
 	}
 	
 	
