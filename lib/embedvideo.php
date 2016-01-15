@@ -59,6 +59,10 @@ function videoembed_create_embed_object($url, $guid, $videowidth=0, $input) {
 		return videoembed_teachertube_handler($url, $guid, $videowidth);
 	} else if (strpos($url, 'hulu.com') != false) {
 		return videoembed_hulu_handler($url, $guid, $videowidth);
+	} else if (strpos($url, 'instagram.com') != false) {
+		return videoembed_instagram_handler($url, $guid, $videowidth);
+	} else if (strpos($url, 'instagr.am') != false) {
+		return videoembed_instagram_shortener_parse_url($url, $guid, $videowidth);
 	}
 
 	if (!$input) {
@@ -130,6 +134,8 @@ function videoembed_add_object($type, $url, $guid, $width, $height) {
 		case 'hulu':
 			$videodiv .= "<object width=\"{$width}\" height=\"{$height}\"><param name=\"movie\" value=\"http://www.hulu.com/embed/{$url}\"></param><param name=\"allowFullScreen\" value=\"true\"></param><embed src=\"http://www.hulu.com/embed/{$url}\" type=\"application/x-shockwave-flash\" allowFullScreen=\"true\"  width=\"{$width}\" height=\"{$height}\"></embed></object>";
 			break;
+		case 'instagram':
+			$videodiv .= "<iframe src=\"{$url}embed/\" width=\"$width\" height=\"$height\" frameborder=\"0\" scrolling=\"no\" allowtransparency=\"true\"></iframe>";
 	}
 
 	$videodiv .= "</div>";
@@ -750,4 +756,31 @@ function videoembed_hulu_parse_url($url) {
 	//echo $hash;
 
 	return $hash;
+}
+
+function videoembed_instagram_handler($url, $guid, $videowidth) {
+	if (!isset($url)) {
+		return '<p><b>' . elgg_echo('embedvideo:parseerror', array('instagram')) . '</b></p>';
+	}
+
+	videoembed_calc_size($videowidth, $videoheight, 425/320, 24);
+
+	$embed_object = videoembed_add_css($guid, $videowidth, $videoheight);
+
+	$embed_object .= videoembed_add_object('instagram', $url, $guid, $videowidth, $videoheight);
+
+	return $embed_object;
+}
+
+function videoembed_instagram_shortener_parse_url($url, $guid, $videowidth) {
+	$path = parse_url($url, PHP_URL_PATH);
+	$videourl = 'https://instagram.com' . $path;
+
+	videoembed_calc_size($videowidth, $videoheight, 425/320, 24);
+
+	$embed_object = videoembed_add_css($guid, $videowidth, $videoheight);
+
+	$embed_object .= videoembed_add_object('instagram', $videourl, $guid, $videowidth, $videoheight);
+
+	return $embed_object;
 }
