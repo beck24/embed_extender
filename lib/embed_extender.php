@@ -30,10 +30,13 @@ function embed_extender_parser($input, $view, $context)
 		}
 	}
 	$patterns = array('#(((http://)?)|(^./))(((www.)?)|(^./))youtube\.com/watch[?]v=([^\[\]()<.,\s\n\t\r]+)#i'
-						,'#(((http://)?)|(^./))(((www.)?)|(^./))youtu\.be/([^\[\]()<.,\s\n\t\r]+)#i'
-						,'/(http:\/\/)?(www\.)?(vimeo\.com\/groups)(.*)(\/videos\/)([0-9]*)(\/)?/'
-						,'/(http:\/\/)(www\.)?(metacafe\.com\/watch\/)([0-9a-zA-Z_-]*)(\/[0-9a-zA-Z_-]*)(\/)/'
-						 ,'/(http:\/\/)?(www\.)?(vimeo.com\/)([^a-zA-Z][0-9]*)(\/)?/');
+				,'#(((http://)?)|(^./))(((www.)?)|(^./))youtu\.be/([^\[\]()<.,\s\n\t\r]+)#i'
+				,'/(http:\/\/)?(www\.)?(vimeo\.com\/groups)(.*)(\/videos\/)([0-9]*)(\/)?/'
+				,'/(http:\/\/)(www\.)?(metacafe\.com\/watch\/)([0-9a-zA-Z_-]*)(\/[0-9a-zA-Z_-]*)(\/)/'
+				,'/(http:\/\/)?(www\.)?(vimeo.com\/)([^a-zA-Z][0-9]*)(\/)?/'
+				,'/(http:\/\/)?(www\.)?(vimeo\.com\/channels)(.*)(\/)([0-9]*)(\/)?/'
+				,'/(http:\/\/)?(www\.)?(instagram\.com\/p\/)([0-9a-zA-Z_-]*)(\/)?/'
+				,'/(http:\/\/)?(www\.)?(instagr\.am\/p\/)([0-9a-zA-Z_-]*)(\/)?/');
 	
 	$custom_provider = elgg_get_plugin_setting('custom_provider', 'embed_extender');		
 
