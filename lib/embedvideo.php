@@ -123,7 +123,7 @@ function videoembed_add_object($type, $url, $guid, $width, $height) {
 			$videodiv .= "<embed src=\"http://www.veoh.com/veohplayer.swf?permalinkId={$url}&player=videodetailsembedded&videoAutoPlay=0\" allowFullScreen=\"true\" width=\"$width\" height=\"$height\" bgcolor=\"#FFFFFF\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\"></embed>";
 			break;
 		case 'dm':
-			$videodiv .= "<object width=\"$width\" height=\"$height\"><param name=\"movie\" value=\"http://www.dailymotion.com/swf/{$url}\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowScriptAccess\" value=\"always\"></param><embed src=\"http://www.dailymotion.com/swf/{$url}\" type=\"application/x-shockwave-flash\" width=\"$width\" height=\"$height\" allowFullScreen=\"true\" allowScriptAccess=\"always\"></embed></object>";
+			$videodiv .= "<iframe width=\"$width\" height=\"$height\" src=\"https://www.dailymotion.com/embed/video/{$url}\" frameborder=\"0\" allowfullscreen></iframe>";
 			break;
 		case 'blip':
 			$videodiv .= "<embed src=\"http://blip.tv/play/{$url}\" type=\"application/x-shockwave-flash\" width=\"$width\" height=\"$height\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed>";
